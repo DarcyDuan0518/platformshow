@@ -1,1 +1,218 @@
-<h1>welcome</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科学家与大国工匠精神展示平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>✨ 科学工匠精神殿堂</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#scientists">科学家</a>
+                <a href="#craftsmen">大国工匠</a>
+                <a href="#spirit">精神传承</a>
+            </nav>
+            <button class="search-toggle" onclick="toggleSearch()">🔍</button>
+        </div>
+    </header>
+
+    <!-- 搜索侧边栏 -->
+    <div id="searchSidebar" class="search-sidebar">
+        <div class="sidebar-header">
+            <h3>筛选与搜索</h3>
+            <button class="close-sidebar" onclick="toggleSearch()">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="search-box-wrapper">
+                <div class="search-input-wrapper">
+                    <input type="text" id="searchInput" placeholder="搜索姓名或关键词..." class="sidebar-search" autocomplete="off">
+                    <div id="searchSuggestions" class="search-suggestions"></div>
+                </div>
+                <button class="search-btn-primary" onclick="performSearch()">🔍 搜索</button>
+            </div>
+
+            <div class="filter-group">
+                <label>按类别</label>
+                <div class="filter-buttons">
+                    <button class="filter-tag active" data-category="all">全部</button>
+                    <button class="filter-tag" data-category="scientist">科学家</button>
+                    <button class="filter-tag" data-category="craftsman">工匠</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>按领域</label>
+                <select id="fieldFilter">
+                    <option value="">所有领域</option>
+                    <option value="物理学">物理学</option>
+                    <option value="航天工程">航天工程</option>
+                    <option value="农业科学">农业科学</option>
+                    <option value="医学">医学</option>
+                    <option value="天文学">天文学</option>
+                    <option value="核物理">核物理</option>
+                    <option value="航天制造">航天制造</option>
+                    <option value="精密测量">精密测量</option>
+                    <option value="高铁制造">高铁制造</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>按年代</label>
+                <select id="eraFilter">
+                    <option value="">所有年代</option>
+                    <option value="近代">近代(1900-1949)</option>
+                    <option value="现代">现代(1949-1999)</option>
+                    <option value="当代">当代(2000至今)</option>
+                </select>
+            </div>
+
+            <button class="clear-btn-full" onclick="clearFilters()">✕ 清空筛选</button>
+        </div>
+    </div>
+
+    <!-- 主横幅 -->
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">传承科学精神 · 弘扬工匠品质</h1>
+            <p class="hero-subtitle">致敬每一位用智慧和汗水改变世界的伟大人物</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="scientistCount">0</div>
+                    <div class="stat-label">位科学家</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="craftsmanCount">0</div>
+                    <div class="stat-label">位大国工匠</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">项重大成就</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色人物展示 -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">⭐</span>
+                特色人物
+                <span class="title-line"></span>
+            </h2>
+            <div class="featured-grid" id="featuredGrid">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 科学家展示区 -->
+    <section class="people-section scientist-section" id="scientists">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">🔬</span>
+                科学家风采
+                <span class="title-line"></span>
+            </h2>
+            <p class="section-desc">他们用智慧点燃科学之光，用创新推动时代进步</p>
+            <div class="people-grid" id="scientistGrid">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 大国工匠展示区 -->
+    <section class="people-section craftsman-section" id="craftsmen">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">🔧</span>
+                大国工匠风采
+                <span class="title-line"></span>
+            </h2>
+            <p class="section-desc">他们用双手铸就精品，用匠心诠释专业精神</p>
+            <div class="people-grid" id="craftsmanGrid">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 精神传承区 -->
+    <section class="spirit-section" id="spirit">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">💫</span>
+                精神传承
+                <span class="title-line"></span>
+            </h2>
+            <div class="spirit-cards">
+                <div class="spirit-card">
+                    <div class="spirit-card-icon">🇨🇳</div>
+                    <h3>爱国情怀</h3>
+                    <p>心系祖国，将个人理想融入国家发展，为民族复兴贡献力量</p>
+                </div>
+                <div class="spirit-card">
+                    <div class="spirit-card-icon">💡</div>
+                    <h3>创新精神</h3>
+                    <p>敢为人先，勇于突破，在科技前沿和工艺极限不断探索</p>
+                </div>
+                <div class="spirit-card">
+                    <div class="spirit-card-icon">🎯</div>
+                    <h3>专注执着</h3>
+                    <p>数十年如一日，对事业精益求精，追求卓越品质</p>
+                </div>
+                <div class="spirit-card">
+                    <div class="spirit-card-icon">🌟</div>
+                    <h3>无私奉献</h3>
+                    <p>淡泊名利，甘于奉献，用一生诠释责任与担当</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 人物详情模态框 -->
+    <div id="detailModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalContent" class="modal-body">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于平台</h3>
+                    <p>致力于传播科学家和大国工匠的感人事迹，弘扬时代精神</p>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p>欢迎提供更多人物事迹素材</p>
+                </div>
+                <div class="footer-section">
+                    <h3>分享平台</h3>
+                    <p>让更多人了解这些伟大的人物</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 科学工匠精神展示平台 | 传承精神 · 致敬榜样</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="features.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
