@@ -232,7 +232,7 @@ function renderFeaturedPeople() {
         <div class="featured-card" onclick="showDetail(${person.id})" style="background-image: url('${person.image}');">
             <div class="featured-card-content">
                 <span class="featured-badge">
-                    ${person.category === 'scientist' ? '🔬 科学家' : '🔧 大国工匠'}
+                    ${person.category === 'scientist' ? '🔬 科学家' : '🔧 行业匠人'}
                 </span>
                 <h3>${person.name}</h3>
                 <div class="featured-field">${person.field} · ${person.birth}-${person.death || '至今'}</div>
@@ -504,7 +504,7 @@ function showDetail(personId) {
             <div class="modal-header-content">
                 <h2 class="modal-name">${person.name}</h2>
                 <div class="modal-meta">
-                    ${person.category === 'scientist' ? '🔬 科学家' : '🔧 大国工匠'} ·
+                    ${person.category === 'scientist' ? '🔬 科学家' : '🔧 行业匠人'} ·
                     ${person.field} ·
                     ${person.birth}-${person.death || '至今'}
                 </div>
